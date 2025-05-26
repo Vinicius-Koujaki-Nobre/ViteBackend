@@ -1,55 +1,53 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './App.module.css'
 import { api } from './api/api'
+import { useNavigate } from 'react-router'
 
 function App() {
-  const [data, setData] = useState([])
-  const [funcionario, setFuncionario] = useState([])
-  const [ex, setEx] = useState([])
 
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    api.get('/').then((res) => {
-      setData(res.data)
-    })
-  })
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useState(null)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
-    api.get('/funcionarios').then((res) => {
-      setFuncionario(res.data.items)
-    })
-  })
+    const storedUser = localStorage.getItem('user')
+    if(storedUser){
+      setUser(JSON.parse(storedUser))
+      navigate('/userList')
+    }
+  }, [navigate])
 
-  useEffect(() => {
-    api.get('/ex').then((res) => {
-      setEx(res.data.items)
-    })
-  })
+
+  const handleLogin = async(e) => {
+    e.preventDefault()
+    try {
+      const response = await api.post('/login', {email, password})
+      const user = response.data
+
+      localStorage.setItem('user', JSON.stringify(user))
+      setUser(user)
+      navigate('/userList')
+      console.log()
+    }
+    catch (error) {
+      setMessage('Erro no login:  ' + (error.response?.data?.message || 'Verifique os dados'))
+    }
+  }
 
   return (
     <>
-      {data}
-      <br/><br />
-      {funcionario.map((items) => {
-        return(
-          <div key={items.id}>
-            <h3>Nome: {items.nome}</h3>
-            <p>Profissão: {items.cargo}</p>
-            <p>Idade: {items.idade}</p>
-            <p>Licença: {items.temLicenca ? "Habilitado 😎" : "Sem premissao 👈"}</p>
-          </div>
-        )
-      })}
-
-      <br /><br />
-      {ex.map((items) => {
-        return(
-          <div key={items.id}>
-            <h3>{items.name}</h3>
-            <img src={items.img} alt={items.name} />
-          </div>
-        )
-      })}
+      <div style={{padding: '2rem'}}>
+        <form onSubmit={handleLogin}>
+          <h2>Login</h2>
+          <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <input type="password" placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          <button type='submit'>Entrar </button>
+          <p>{message}</p>
+        </form>
+      </div>
     </>
   )
 }
