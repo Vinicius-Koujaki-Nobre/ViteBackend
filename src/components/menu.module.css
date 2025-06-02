@@ -1,0 +1,65 @@
+/* menu aberto */
+
+.navBar{
+    background-color: var(--dark);
+    min-width: 200px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    box-shadow: rgba(84, 48, 15, 0.25) 0px 54px 55px, rgba(77, 53, 15, 0.12) 0px -12px 30px, rgba(122, 75, 24, 0.12) 0px 4px 6px, rgba(96, 64, 20, 0.17) 0px 12px 13px, rgba(118, 72, 15, 0.09) 0px -3px 5px;
+}
+
+.navBar img {
+    width: 30px;
+    height: auto;
+    opacity: 0.7;
+}
+
+.navBar img:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.navBar p{
+    opacity: 0.7;
+    border: 2px solid transparent;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 100ms ease-in-out;
+}
+
+.navBar p:hover{
+    opacity: 1;
+    cursor: pointer;
+    border: 2px solid var(--light);
+}
+
+/* menu fechado */
+
+.navBarClosed {
+    background-color: var(--dark);
+    width: auto;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    box-shadow: rgba(60, 15, 84, 0.25) 0px 54px 55px, rgba(55, 15, 77, 0.12) 0px -12px 30px, rgba(91, 24, 122, 0.12) 0px 4px 6px, rgba(70, 20, 96, 0.17) 0px 12px 13px, rgba(82, 15, 118, 0.09) 0px -3px 5px;
+}
+
+.navBarClosed  p {
+    display: none
+}
+
+.navBarClosed img {
+    width: 30px;
+    height: auto;
+    opacity: 0.7;
+}
+
+.navBarClosed img:hover{
+    cursor: pointer;
+    opacity: 1;
+}
