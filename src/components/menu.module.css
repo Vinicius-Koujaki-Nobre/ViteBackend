@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     gap: 2vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     box-shadow: rgba(84, 48, 15, 0.25) 0px 54px 55px, rgba(77, 53, 15, 0.12) 0px -12px 30px, rgba(122, 75, 24, 0.12) 0px 4px 6px, rgba(96, 64, 20, 0.17) 0px 12px 13px, rgba(118, 72, 15, 0.09) 0px -3px 5px;
 }
 
@@ -46,6 +48,8 @@
     display: flex;
     flex-direction: column;
     gap: 2vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     box-shadow: rgba(60, 15, 84, 0.25) 0px 54px 55px, rgba(55, 15, 77, 0.12) 0px -12px 30px, rgba(91, 24, 122, 0.12) 0px 4px 6px, rgba(70, 20, 96, 0.17) 0px 12px 13px, rgba(82, 15, 118, 0.09) 0px -3px 5px;
 }
 
